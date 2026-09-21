@@ -1,1 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<meta name="description" content="Amaan Khan - BCA Student and Aspiring Software Developer">
+<meta name="author" content="Amaan Khan">
+
+<title>Amaan Khan | Developer Portfolio</title>
+
+<style>
+
+:root{
+    --bg:#050816;
+    --card:rgba(255,255,255,.06);
+    --border:rgba(255,255,255,.12);
+    --text:#f8fafc;
+    --muted:#94a3b8;
+    --primary:#38bdf8;
+    --secondary:#8b5cf6;
+    --success:#22c55e;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Inter,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    overflow-x:hidden;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:rgba(56,189,248,.12);
+    filter:blur(120px);
+    border-radius:50%;
+    top:-200px;
+    left:-200px;
+    z-index:-1;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:rgba(139,92,246,.12);
+    filter:blur(120px);
+    border-radius:50%;
+    bottom:-200px;
+    right:-200px;
+    z-index:-1;
+}
+
+/* NAVBAR */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+    backdrop-filter:blur(15px);
+    background:rgba(5,8,22,.75);
+    border-bottom:1px solid var(--border);
+}
+
+.nav-container{
+    max-width:1150px;
+    margin:auto;
+    padding:18px 25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:800;
+    color:white;
+}
+
+.logo span{
+    color:var(--primary);
+}
+
+.nav-links{
+    display:flex;
+    gap:28px;
+    list-style:none;
+}
+
+.nav-links a{
+    color:#cbd5e1;
+    text-decoration:none;
+    font-size:14px;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:var(--primary);
+}
+
+.menu{
+    display:none;
+    font-size:26px;
+    cursor:pointer;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    max-width:1150px;
+    margin:auto;
+    padding:150px 25px 80px;
+    display:flex;
+    align-items:center;
+}
+
+.hero-content{
+    max-width:800px;
+}
+
+.badge{
+    display:inline-block;
+    padding:8px 15px;
+    border:1px solid var(--border);
+    background:var(--card);
+    border-radius:30px;
+    color:var(--primary);
+    font-size:13px;
+    margin-bottom:25px;
+}
+
+.hero h1{
+    font-size:clamp(48px,9vw,90px);
+    line-height:1;
+    letter-spacing:-4px;
+    margin-bottom:20px;
+}
+
+.gradient{
+    background:linear-gradient(
+        90deg,
+        var(--primary),
+        var(--secondary)
+    );
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero h2{
+    font-size:clamp(20px,4vw,32px);
+    color:#cbd5e1;
+    margin-bottom:20px;
+}
+
+.typing{
+    color:var(--primary);
+}
+
+.hero p{
+    max-width:650px;
+    color:var(--muted);
+    font-size:18px;
+    line-height:1.8;
+    margin-bottom:30px;
+}
+
+.buttons{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:13px 23px;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:700;
+    transition:.3s;
+    display:inline-block;
+}
+
+.btn-primary{
+    background:var(--primary);
+    color:#031018;
+}
+
+.btn-secondary{
+    border:1px solid var(--border);
+    color:white;
+    background:var(--card);
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+}
+
+/* GENERAL */
+
+section{
+    max-width:1150px;
+    margin:auto;
+    padding:100px 25px;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.section-title small{
+    color:var(--primary);
+    font-weight:700;
+    letter-spacing:2px;
+}
+
+.section-title h2{
+    font-size:42px;
+    margin-top:10px;
+}
+
+.section-title p{
+    color:var(--muted);
+    margin-top:12px;
+}
+
+/* ABOUT */
+
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+}
+
+.glass{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:30px;
+    backdrop-filter:blur(10px);
+}
+
+.glass h3{
+    margin-bottom:15px;
+    font-size:24px;
+}
+
+.glass p{
+    color:var(--muted);
+    line-height:1.8;
+}
+
+.info{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+    margin-top:20px;
+}
+
+.info div{
+    padding:15px;
+    background:rgba(255,255,255,.04);
+    border-radius:12px;
+}
+
+.info strong{
+    display:block;
+    margin-bottom:5px;
+}
+
+.info span{
+    color:var(--muted);
+    font-size:14px;
+}
+
+/* SKILLS */
+
+.skills{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:15px;
+}
+
+.skill{
+    padding:14px 22px;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    color:#e2e8f0;
+    transition:.3s;
+}
+
+.skill:hover{
+    transform:translateY(-5px);
+    border-color:var(--primary);
+    color:var(--primary);
+}
+
+/* EDUCATION */
+
+.timeline{
+    max-width:800px;
+    margin:auto;
+    position:relative;
+}
+
+.timeline::before{
+    content:"";
+    position:absolute;
+    left:20px;
+    top:0;
+    bottom:0;
+    width:2px;
+    background:linear-gradient(
+        var(--primary),
+        var(--secondary)
+    );
+}
+
+.timeline-item{
+    position:relative;
+    padding-left:60px;
+    margin-bottom:35px;
+}
+
+.dot{
+    position:absolute;
+    left:11px;
+    top:5px;
+    width:20px;
+    height:20px;
+    border-radius:50%;
+    background:var(--primary);
+    box-shadow:0 0 20px var(--primary);
+}
+
+.timeline-item h3{
+    margin-bottom:7px;
+}
+
+.timeline-item span{
+    color:var(--primary);
+    font-size:14px;
+}
+
+.timeline-item p{
+    color:var(--muted);
+    margin-top:8px;
+}
+
+/* PROJECTS */
+
+.projects{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.project{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:28px;
+    transition:.35s;
+    position:relative;
+    overflow:hidden;
+}
+
+.project::before{
+    content:"";
+    position:absolute;
+    width:100px;
+    height:100px;
+    background:var(--primary);
+    filter:blur(70px);
+    opacity:.12;
+    right:-30px;
+    top:-30px;
+}
+
+.project:hover{
+    transform:translateY(-8px);
+    border-color:rgba(56,189,248,.5);
+}
+
+.project-icon{
+    font-size:35px;
+    margin-bottom:20px;
+}
+
+.project h3{
+    margin-bottom:12px;
+}
+
+.project p{
+    color:var(--muted);
+    line-height:1.7;
+    font-size:15px;
+}
+
+.tags{
+    display:flex;
+    gap:7px;
+    flex-wrap:wrap;
+    margin-top:20px;
+}
+
+.tags span{
+    font-size:11px;
+    padding:5px 9px;
+    border-radius:6px;
+    background:rgba(56,189,248,.1);
+    color:var(--primary);
+}
+
+.project-link{
+    display:inline-block;
+    margin-top:20px;
+    color:var(--primary);
+    text-decoration:none;
+    font-size:14px;
+}
+
+/* CONTACT */
+
+.contact{
+    text-align:center;
+}
+
+.contact-box{
+    max-width:700px;
+    margin:auto;
+}
+
+.contact-box p{
+    color:var(--muted);
+    line-height:1.8;
+    margin-bottom:25px;
+}
+
+.contact-links{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+/* FOOTER */
+
+footer{
+    border-top:1px solid var(--border);
+    text-align:center;
+    padding:30px 20px;
+    color:var(--muted);
+    font-size:14px;
+}
+
+footer span{
+    color:var(--primary);
+}
+
+/* SCROLL ANIMATION */
+
+.reveal{
+    opacity:0;
+    transform:translateY(30px);
+    transition:all .8s ease;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* MOBILE */
+
+@media(max-width:850px){
+
+    .nav-links{
+        position:absolute;
+        top:70px;
+        right:20px;
+        width:220px;
+        padding:20px;
+        background:#0b1124;
+        border:1px solid var(--border);
+        border-radius:15px;
+        flex-direction:column;
+        gap:18px;
+        display:none;
+    }
+
+    .nav-links.show{
+        display:flex;
+    }
+
+    .menu{
+        display:block;
+    }
+
+    .about-grid{
+        grid-template-columns:1fr;
+    }
+
+    .projects{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .hero{
+        padding-top:130px;
+    }
+
+    .hero h1{
+        letter-spacing:-2px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    section{
+        padding:75px 20px;
+    }
+
+    .section-title h2{
+        font-size:34px;
+    }
+
+    .info{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<nav>
+<div class="nav-container">
+
+<div class="logo">
+Amaan<span>.</span>
+</div>
+
+<div class="menu" onclick="toggleMenu()">☰</div>
+
+<ul class="nav-links" id="navLinks">
+
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#education">Education</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#contact">Contact</a></li>
+
+</ul>
+
+</div>
+</nav>
+
+
+<!-- HERO -->
+
+<header class="hero" id="home">
+
+<div class="hero-content reveal">
+
+<div class="badge">
+Available for Opportunities
+</div>
+
+<h1>
+Hi I'm <span class="gradient">Amaan</span>
+</h1>
+
+<h2>
+BCA Student &nbsp;|&nbsp;
+<span class="typing" id="typing"></span>
+</h2>
+
+<p>
+I am an aspiring software developer passionate about
+web development, programming and technology.
+I enjoy learning new technologies and turning ideas
+into practical digital projects.
+</p>
+
+<div class="buttons">
+
+<a href="#projects" class="btn btn-primary">
+View Projects
+</a>
+
+<a href="#contact" class="btn btn-secondary">
+Contact Me
+</a>
+
+</div>
+
+</div>
+
+</header>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<div class="section-title reveal">
+
+<small>GET TO KNOW ME</small>
+
+<h2>About Me</h2>
+
+<p>A little bit about my journey</p>
+
+</div>
+
+<div class="about-grid">
+
+<div class="glass reveal">
+
+<h3>Who I Am</h3>
+
+<p>
+I'm Amaan, a BCA student and aspiring software developer.
+My interests include web development, programming,
+databases and cybersecurity.
+</p>
+
+<p style="margin-top:15px;">
+I'm currently focused on improving my practical skills
+by building projects and learning modern development
+technologies.
+</p>
+
+</div>
+
+<div class="glass reveal">
+
+<h3>Quick Information</h3>
+
+<div class="info">
+
+<div>
+<strong>Education</strong>
+<span>Bachelor of Computer Applications</span>
+</div>
+
+<div>
+<strong>Focus</strong>
+<span>Software Development</span>
+</div>
+
+<div>
+<strong>Languages</strong>
+<span>C • C++ • JavaScript</span>
+</div>
+
+<div>
+<strong>Web</strong>
+<span>HTML • CSS • JavaScript</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SKILLS -->
+
+<section id="skills">
+
+<div class="section-title reveal">
+
+<small>MY TOOLKIT</small>
+
+<h2>Skills</h2>
+
+<p>Technologies I'm learning and working with</p>
+
+</div>
+
+<div class="skills reveal">
+
+<div class="skill">HTML5</div>
+<div class="skill">CSS3</div>
+<div class="skill">JavaScript</div>
+<div class="skill">C</div>
+<div class="skill">C++</div>
+<div class="skill">SQL</div>
+<div class="skill">Git</div>
+<div class="skill">GitHub</div>
+<div class="skill">Responsive Design</div>
+<div class="skill">Problem Solving</div>
+
+</div>
+
+</section>
+
+
+<!-- EDUCATION -->
+
+<section id="education">
+
+<div class="section-title reveal">
+
+<small>MY JOURNEY</small>
+
+<h2>Education</h2>
+
+<p>My academic background</p>
+
+</div>
+
+<div class="timeline">
+
+<div class="timeline-item reveal">
+
+<div class="dot"></div>
+
+<h3>Bachelor of Computer Applications</h3>
+
+<span>Integral University</span>
+
+<p>
+Studying computer applications with a focus on
+programming, databases, web development and
+computer science fundamentals.
+</p>
+
+</div>
+
+<div class="timeline-item reveal">
+
+<div class="dot"></div>
+
+<h3>Higher Secondary Education</h3>
+
+<span>Commerce Background</span>
+
+<p>
+Built a foundation in business and commerce before
+moving toward computer applications and technology.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PROJECTS -->
+
+<section id="projects">
+
+<div class="section-title reveal">
+
+<small>MY WORK</small>
+
+<h2>Projects</h2>
+
+<p>Things I'm building and learning from</p>
+
+</div>
+
+<div class="projects">
+
+<div class="project reveal">
+
+<div class="project-icon">🌐</div>
+
+<h3>Personal Portfolio</h3>
+
+<p>
+A responsive developer portfolio created to showcase
+my skills, education and projects.
+</p>
+
+<div class="tags">
+<span>HTML</span>
+<span>CSS</span>
+<span>JavaScript</span>
+</div>
+
+<a href="#" class="project-link">
+View Project →
+</a>
+
+</div>
+
+
+<div class="project reveal">
+
+<div class="project-icon">🎓</div>
+
+<h3>Student Management System</h3>
+
+<p>
+A concept project for managing student information,
+records and academic data.
+</p>
+
+<div class="tags">
+<span>C++</span>
+<span>SQL</span>
+<span>Database</span>
+</div>
+
+<a href="#" class="project-link">
+Coming Soon →
+</a>
+
+</div>
+
+
+<div class="project reveal">
+
+<div class="project-icon">💰</div>
+
+<h3>Expense Tracker</h3>
+
+<p>
+A web application concept for recording expenses and
+organising personal financial information.
+</p>
+
+<div class="tags">
+<span>HTML</span>
+<span>CSS</span>
+<span>JavaScript</span>
+</div>
+
+<a href="#" class="project-link">
+Coming Soon →
+</a>
+
+</div>
+
+
+<div class="project reveal">
+
+<div class="project-icon">🔐</div>
+
+<h3>Cybersecurity Project</h3>
+
+<p>
+An educational project focused on cybersecurity
+awareness and safe digital practices.
+</p>
+
+<div class="tags">
+<span>Cybersecurity</span>
+<span>Web</span>
+</div>
+
+<a href="#" class="project-link">
+Coming Soon →
+</a>
+
+</div>
+
+
+<div class="project reveal">
+
+<div class="project-icon">☁️</div>
+
+<h3>Weather Application</h3>
+
+<p>
+A planned weather application using an API to display
+real-time weather information.
+</p>
+
+<div class="tags">
+<span>JavaScript</span>
+<span>API</span>
+</div>
+
+<a href="#" class="project-link">
+Coming Soon →
+</a>
+
+</div>
+
+
+<div class="project reveal">
+
+<div class="project-icon">🚀</div>
+
+<h3>More Projects</h3>
+
+<p>
+More projects will be added as I continue learning,
+building and improving my development skills.
+</p>
+
+<div class="tags">
+<span>Learning</span>
+<span>Building</span>
+</div>
+
+<a href="#contact" class="project-link">
+Stay Tuned →
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+<div class="section-title reveal">
+
+<small>LET'S CONNECT</small>
+
+<h2>Contact Me</h2>
+
+</div>
+
+<div class="contact-box glass reveal">
+
+<p>
+I'm currently learning, building projects and looking
+for opportunities where I can grow as a developer.
+If you'd like to connect, feel free to reach out.
+</p>
+
+<div class="contact-links">
+
+<a href="mailto:your-email@example.com"
+class="btn btn-primary">
+Email Me
+</a>
+
+<a href="https://github.com/amaanhyder35-hash"
+class="btn btn-secondary"
+target="_blank">
+GitHub
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+© 2026 <span>Amaan Khan</span> • Built with HTML CSS & JavaScript
+
+</footer>
+
+
+<script>
+
+/* TYPING EFFECT */
+
+const words = [
+    "Aspiring Software Developer",
+    "Web Developer",
+    "Programmer",
+    "Tech Enthusiast"
+];
+
+let wordIndex = 0;
+let charIndex = 0;
+let deleting = false;
+
+function typeEffect(){
+
+    const element = document.getElementById("typing");
+
+    const word = words[wordIndex];
+
+    if(!deleting){
+
+        element.textContent = word.substring(0,charIndex + 1);
+
+        charIndex++;
+
+        if(charIndex === word.length){
+
+            deleting = true;
+
+            setTimeout(typeEffect,1500);
+
+            return;
+        }
+
+    }else{
+
+        element.textContent = word.substring(0,charIndex - 1);
+
+        charIndex--;
+
+        if(charIndex === 0){
+
+            deleting = false;
+
+            wordIndex++;
+
+            if(wordIndex === words.length){
+                wordIndex = 0;
+            }
+
+        }
+
+    }
+
+    setTimeout(typeEffect,deleting ? 50 : 90);
+}
+
+typeEffect();
+
+
+/* MOBILE MENU */
+
+function toggleMenu(){
+
+    document
+    .getElementById("navLinks")
+    .classList
+    .toggle("show");
+
+}
+
+
+/* SCROLL ANIMATION */
+
+const observer = new IntersectionObserver(
+    entries => {
+
+        entries.forEach(entry => {
+
+            if(entry.isIntersecting){
+
+                entry.target.classList.add("active");
+
+            }
+
+        });
+
+    },
+    {
+        threshold:.15
+    }
+);
+
+document
+.querySelectorAll(".reveal")
+.forEach(el => observer.observe(el));
+
+
+/* CLOSE MOBILE MENU */
+
+document
+.querySelectorAll(".nav-links a")
+.forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        document
+        .getElementById("navLinks")
+        .classList
+        .remove("show");
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
