@@ -1,1 +1,1078 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Advanced Cybersecurity Password Analyzer by Amaan">
+<meta name="theme-color" content="#050b16">
+
+<title>CyberShield | Password Security Analyzer</title>
+
+<style>
+:root{
+    --bg:#030712;
+    --panel:#0b1220;
+    --panel2:#111827;
+    --border:#1e334b;
+    --text:#f8fafc;
+    --muted:#94a3b8;
+    --blue:#00c8ff;
+    --green:#22c55e;
+    --yellow:#f59e0b;
+    --red:#ef4444;
+    --purple:#8b5cf6;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    font-family:Inter,Arial,sans-serif;
+    color:var(--text);
+    background:
+        radial-gradient(circle at 15% 10%,rgba(0,200,255,.12),transparent 30%),
+        radial-gradient(circle at 85% 90%,rgba(139,92,246,.12),transparent 30%),
+        var(--bg);
+    padding:25px;
+}
+
+.container{
+    width:100%;
+    max-width:1050px;
+    margin:auto;
+}
+
+/* HEADER */
+
+header{
+    text-align:center;
+    padding:30px 10px;
+}
+
+.logo{
+    font-size:50px;
+    margin-bottom:10px;
+}
+
+h1{
+    font-size:clamp(30px,6vw,52px);
+    background:linear-gradient(90deg,#fff,#00c8ff);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.subtitle{
+    color:var(--muted);
+    margin-top:12px;
+    font-size:16px;
+}
+
+/* MAIN CARD */
+
+.dashboard{
+    background:rgba(11,18,32,.88);
+    border:1px solid var(--border);
+    border-radius:28px;
+    padding:30px;
+    box-shadow:0 30px 80px rgba(0,0,0,.4);
+    backdrop-filter:blur(20px);
+}
+
+/* PASSWORD */
+
+.label{
+    display:block;
+    color:#cbd5e1;
+    margin-bottom:10px;
+    font-weight:600;
+}
+
+.input-wrap{
+    position:relative;
+}
+
+input{
+    width:100%;
+    padding:18px 110px 18px 18px;
+    background:#030712;
+    border:1px solid #26384e;
+    border-radius:14px;
+    color:white;
+    font-size:17px;
+    outline:none;
+    transition:.25s;
+}
+
+input:focus{
+    border-color:var(--blue);
+    box-shadow:0 0 0 3px rgba(0,200,255,.1);
+}
+
+.input-actions{
+    position:absolute;
+    right:10px;
+    top:8px;
+    display:flex;
+    gap:5px;
+}
+
+.icon-btn{
+    border:0;
+    background:#172235;
+    color:#cbd5e1;
+    width:42px;
+    height:42px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:17px;
+}
+
+.icon-btn:hover{
+    background:#22334c;
+}
+
+/* SCORE */
+
+.score-section{
+    display:grid;
+    grid-template-columns:170px 1fr;
+    gap:25px;
+    margin-top:30px;
+    align-items:center;
+}
+
+.score-circle{
+    width:160px;
+    height:160px;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    background:conic-gradient(var(--blue) 0deg,#172235 0deg);
+    position:relative;
+    margin:auto;
+}
+
+.score-circle::before{
+    content:"";
+    position:absolute;
+    width:130px;
+    height:130px;
+    border-radius:50%;
+    background:#080f1c;
+}
+
+.score-content{
+    position:relative;
+    text-align:center;
+}
+
+.score-number{
+    font-size:38px;
+    font-weight:800;
+}
+
+.score-label{
+    color:var(--muted);
+    font-size:13px;
+}
+
+.strength-title{
+    font-size:25px;
+    margin-bottom:8px;
+}
+
+.strength-description{
+    color:var(--muted);
+    line-height:1.6;
+}
+
+/* PROGRESS */
+
+.progress-box{
+    margin-top:20px;
+}
+
+.progress-bg{
+    width:100%;
+    height:10px;
+    background:#172235;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress{
+    height:100%;
+    width:0%;
+    transition:.4s;
+    border-radius:20px;
+    background:var(--red);
+}
+
+/* GRID */
+
+.metrics{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+    margin-top:25px;
+}
+
+.metric{
+    background:#080f1c;
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:18px;
+}
+
+.metric-title{
+    color:var(--muted);
+    font-size:13px;
+}
+
+.metric-value{
+    font-size:20px;
+    font-weight:700;
+    margin-top:7px;
+}
+
+/* CHECKS */
+
+.section-title{
+    font-size:20px;
+    margin:30px 0 15px;
+}
+
+.checks{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+}
+
+.check{
+    background:#080f1c;
+    border:1px solid var(--border);
+    padding:14px;
+    border-radius:12px;
+    color:#94a3b8;
+}
+
+.check.good{
+    border-color:rgba(34,197,94,.4);
+    color:#4ade80;
+}
+
+.check-icon{
+    margin-right:8px;
+}
+
+/* GENERATOR */
+
+.generator{
+    margin-top:30px;
+    padding:22px;
+    border-radius:18px;
+    background:linear-gradient(135deg,#0b1627,#111a30);
+    border:1px solid var(--border);
+}
+
+.generator-row{
+    display:flex;
+    gap:10px;
+    margin-top:15px;
+}
+
+.generator input{
+    padding-right:18px;
+}
+
+button.primary{
+    border:0;
+    border-radius:12px;
+    padding:15px 20px;
+    background:linear-gradient(135deg,#00c8ff,#008cff);
+    color:#00131c;
+    font-weight:800;
+    cursor:pointer;
+    white-space:nowrap;
+}
+
+button.primary:hover{
+    transform:translateY(-1px);
+}
+
+/* PRIVACY */
+
+.privacy{
+    margin-top:25px;
+    padding:18px;
+    border-radius:14px;
+    background:rgba(34,197,94,.06);
+    border:1px solid rgba(34,197,94,.2);
+    color:#a7f3d0;
+    line-height:1.6;
+    font-size:14px;
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    padding:30px 10px;
+    color:#64748b;
+    font-size:13px;
+}
+
+.badge{
+    display:inline-block;
+    padding:6px 10px;
+    background:#10243a;
+    color:#00c8ff;
+    border-radius:20px;
+    margin-top:10px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:750px){
+
+    body{
+        padding:12px;
+    }
+
+    .dashboard{
+        padding:20px;
+        border-radius:20px;
+    }
+
+    .score-section{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .metrics{
+        grid-template-columns:1fr;
+    }
+
+    .checks{
+        grid-template-columns:1fr;
+    }
+
+    .generator-row{
+        flex-direction:column;
+    }
+
+    button.primary{
+        width:100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+    <div class="logo">🛡️</div>
+    <h1>CyberShield</h1>
+    <p class="subtitle">
+        Advanced Password Security Analyzer
+    </p>
+</header>
+
+<main class="dashboard">
+
+<label class="label">Enter a password to analyze</label>
+
+<div class="input-wrap">
+
+<input
+    id="password"
+    type="password"
+    placeholder="Type or paste a password..."
+    autocomplete="off"
+    spellcheck="false"
+    oninput="analyze()"
+>
+
+<div class="input-actions">
+
+<button class="icon-btn" onclick="toggleVisibility()" title="Show password">
+    👁️
+</button>
+
+<button class="icon-btn" onclick="clearPassword()" title="Clear">
+    ✕
+</button>
+
+</div>
+
+</div>
+
+<section class="score-section">
+
+<div class="score-circle" id="scoreCircle">
+
+<div class="score-content">
+    <div class="score-number" id="score">0</div>
+    <div class="score-label">/ 100</div>
+</div>
+
+</div>
+
+<div>
+
+<h2 class="strength-title" id="strength">
+    Not analyzed
+</h2>
+
+<p class="strength-description" id="description">
+    Enter a password to receive a detailed security analysis.
+</p>
+
+<div class="progress-box">
+
+<div class="progress-bg">
+    <div class="progress" id="progress"></div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<div class="metrics">
+
+<div class="metric">
+    <div class="metric-title">Password Length</div>
+    <div class="metric-value" id="lengthMetric">0</div>
+</div>
+
+<div class="metric">
+    <div class="metric-title">Entropy Estimate</div>
+    <div class="metric-value" id="entropy">0 bits</div>
+</div>
+
+<div class="metric">
+    <div class="metric-title">Estimated Crack Time</div>
+    <div class="metric-value" id="crackTime">—</div>
+</div>
+
+</div>
+
+<h2 class="section-title">Security Checklist</h2>
+
+<div class="checks">
+
+<div class="check" id="c-length">
+    <span class="check-icon">○</span>
+    At least 12 characters
+</div>
+
+<div class="check" id="c-upper">
+    <span class="check-icon">○</span>
+    Uppercase letters
+</div>
+
+<div class="check" id="c-lower">
+    <span class="check-icon">○</span>
+    Lowercase letters
+</div>
+
+<div class="check" id="c-number">
+    <span class="check-icon">○</span>
+    Numbers
+</div>
+
+<div class="check" id="c-special">
+    <span class="check-icon">○</span>
+    Special characters
+</div>
+
+<div class="check" id="c-common">
+    <span class="check-icon">○</span>
+    Not an obvious common password
+</div>
+
+</div>
+
+<div class="generator">
+
+<h2>🎲 Secure Password Generator</h2>
+
+<p class="subtitle">
+    Generate a random password locally in your browser.
+</p>
+
+<div class="generator-row">
+
+<input
+    id="generated"
+    type="text"
+    readonly
+    placeholder="Generated password"
+>
+
+<button class="primary" onclick="generatePassword()">
+    Generate
+</button>
+
+<button class="primary" onclick="copyPassword()">
+    Copy
+</button>
+
+</div>
+
+</div>
+
+<div class="privacy">
+
+<strong>🛡️ Privacy Notice</strong><br>
+
+Your password is analyzed locally in your browser.
+This application does not store your password.
+For the optional breach check the application uses
+Have I Been Pwned's k-anonymity approach so the complete
+password is never sent to the service.
+
+</div>
+
+</main>
+
+<footer>
+
+Cybersecurity Awareness Project • Developed by Amaan
+
+<div class="badge">
+    HTML • CSS • JavaScript • Web Security
+</div>
+
+</footer>
+
+</div>
+
+<script>
+
+/* ================================
+   ELEMENTS
+================================ */
+
+const passwordInput =
+    document.getElementById("password");
+
+const generatedInput =
+    document.getElementById("generated");
+
+
+/* ================================
+   COMMON PASSWORDS
+================================ */
+
+const commonPasswords = new Set([
+    "password",
+    "password123",
+    "123456",
+    "12345678",
+    "123456789",
+    "qwerty",
+    "qwerty123",
+    "admin",
+    "admin123",
+    "welcome",
+    "letmein",
+    "iloveyou",
+    "abc123",
+    "football",
+    "monkey",
+    "dragon"
+]);
+
+
+/* ================================
+   ANALYZER
+================================ */
+
+function analyze(){
+
+    const password = passwordInput.value;
+
+    document.getElementById("lengthMetric").textContent =
+        password.length;
+
+    if(!password){
+
+        reset();
+
+        return;
+    }
+
+    let score = 0;
+
+    const hasLength = password.length >= 12;
+    const hasUpper = /[A-Z]/.test(password);
+    const hasLower = /[a-z]/.test(password);
+    const hasNumber = /[0-9]/.test(password);
+    const hasSpecial = /[^A-Za-z0-9]/.test(password);
+
+    const common =
+        commonPasswords.has(password.toLowerCase());
+
+    if(password.length >= 8) score += 20;
+    if(hasLength) score += 15;
+    if(hasUpper) score += 15;
+    if(hasLower) score += 15;
+    if(hasNumber) score += 15;
+    if(hasSpecial) score += 20;
+
+    if(common){
+        score = Math.min(score,20);
+    }
+
+    score = Math.min(score,100);
+
+    updateCheck("c-length",hasLength);
+    updateCheck("c-upper",hasUpper);
+    updateCheck("c-lower",hasLower);
+    updateCheck("c-number",hasNumber);
+    updateCheck("c-special",hasSpecial);
+    updateCheck("c-common",!common);
+
+    const entropy =
+        calculateEntropy(password);
+
+    document.getElementById("entropy").textContent =
+        entropy + " bits";
+
+    document.getElementById("crackTime").textContent =
+        estimateCrackTime(entropy);
+
+    updateScore(score);
+
+    checkBreach(password);
+}
+
+
+/* ================================
+   SCORE
+================================ */
+
+function updateScore(score){
+
+    const scoreElement =
+        document.getElementById("score");
+
+    const strength =
+        document.getElementById("strength");
+
+    const description =
+        document.getElementById("description");
+
+    const progress =
+        document.getElementById("progress");
+
+    scoreElement.textContent = score;
+
+    progress.style.width = score + "%";
+
+    let color;
+    let title;
+    let text;
+
+    if(score < 35){
+
+        color = "#ef4444";
+        title = "Very Weak";
+        text =
+        "This password could be easily guessed. Consider replacing it with a longer and more unique password.";
+
+    }
+    else if(score < 60){
+
+        color = "#f59e0b";
+        title = "Weak";
+        text =
+        "Your password has some security characteristics but needs improvement.";
+
+    }
+    else if(score < 80){
+
+        color = "#eab308";
+        title = "Moderate";
+        text =
+        "This password has reasonable complexity but could be stronger.";
+
+    }
+    else if(score < 95){
+
+        color = "#22c55e";
+        title = "Strong";
+        text =
+        "Good password characteristics. Avoid reusing this password on other services.";
+
+    }
+    else{
+
+        color = "#00c8ff";
+        title = "Excellent";
+        text =
+        "This password has strong complexity characteristics. Keep it unique.";
+
+    }
+
+    strength.textContent = title;
+    description.textContent = text;
+
+    progress.style.background = color;
+
+    const degrees =
+        score * 3.6;
+
+    document.getElementById("scoreCircle").style.background =
+        `conic-gradient(${color} ${degrees}deg,#172235 ${degrees}deg)`;
+}
+
+
+/* ================================
+   CHECKLIST
+================================ */
+
+function updateCheck(id,valid){
+
+    const element =
+        document.getElementById(id);
+
+    const icon =
+        element.querySelector(".check-icon");
+
+    if(valid){
+
+        element.classList.add("good");
+        icon.textContent = "✓";
+
+    }
+    else{
+
+        element.classList.remove("good");
+        icon.textContent = "○";
+
+    }
+}
+
+
+/* ================================
+   ENTROPY
+================================ */
+
+function calculateEntropy(password){
+
+    let pool = 0;
+
+    if(/[a-z]/.test(password))
+        pool += 26;
+
+    if(/[A-Z]/.test(password))
+        pool += 26;
+
+    if(/[0-9]/.test(password))
+        pool += 10;
+
+    if(/[^A-Za-z0-9]/.test(password))
+        pool += 32;
+
+    if(pool === 0)
+        return 0;
+
+    return Math.round(
+        password.length * Math.log2(pool)
+    );
+}
+
+
+/* ================================
+   CRACK TIME
+================================ */
+
+function estimateCrackTime(entropy){
+
+    if(entropy < 28)
+        return "Seconds";
+
+    if(entropy < 36)
+        return "Minutes";
+
+    if(entropy < 60)
+        return "Hours–Days";
+
+    if(entropy < 80)
+        return "Months–Years";
+
+    if(entropy < 100)
+        return "Centuries";
+
+    return "Extremely long";
+}
+
+
+/* ================================
+   PASSWORD VISIBILITY
+================================ */
+
+function toggleVisibility(){
+
+    if(passwordInput.type === "password"){
+
+        passwordInput.type = "text";
+
+    }
+    else{
+
+        passwordInput.type = "password";
+
+    }
+}
+
+
+/* ================================
+   CLEAR
+================================ */
+
+function clearPassword(){
+
+    passwordInput.value = "";
+
+    reset();
+}
+
+
+/* ================================
+   RESET
+================================ */
+
+function reset(){
+
+    document.getElementById("score").textContent = "0";
+
+    document.getElementById("strength").textContent =
+        "Not analyzed";
+
+    document.getElementById("description").textContent =
+        "Enter a password to receive a detailed security analysis.";
+
+    document.getElementById("entropy").textContent =
+        "0 bits";
+
+    document.getElementById("crackTime").textContent =
+        "—";
+
+    document.getElementById("lengthMetric").textContent =
+        "0";
+
+    document.getElementById("progress").style.width =
+        "0%";
+
+    document.getElementById("scoreCircle").style.background =
+        "conic-gradient(#00c8ff 0deg,#172235 0deg)";
+
+    [
+        "c-length",
+        "c-upper",
+        "c-lower",
+        "c-number",
+        "c-special",
+        "c-common"
+    ].forEach(id => updateCheck(id,false));
+}
+
+
+/* ================================
+   SECURE PASSWORD GENERATOR
+================================ */
+
+function generatePassword(){
+
+    const length = 20;
+
+    const lowercase =
+        "abcdefghijklmnopqrstuvwxyz";
+
+    const uppercase =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+    const numbers =
+        "0123456789";
+
+    const special =
+        "!@#$%^&*()-_=+";
+
+    const all =
+        lowercase + uppercase + numbers + special;
+
+    let password = "";
+
+    const randomIndex = max =>
+        crypto.getRandomValues(
+            new Uint32Array(1)
+        )[0] % max;
+
+    password += lowercase[randomIndex(lowercase.length)];
+    password += uppercase[randomIndex(uppercase.length)];
+    password += numbers[randomIndex(numbers.length)];
+    password += special[randomIndex(special.length)];
+
+    while(password.length < length){
+
+        password +=
+            all[randomIndex(all.length)];
+
+    }
+
+    password =
+        password
+        .split("")
+        .sort(() => crypto.getRandomValues(
+            new Uint32Array(1)
+        )[0] - 2147483648)
+        .join("");
+
+    generatedInput.value =
+        password;
+
+    passwordInput.value =
+        password;
+
+    analyze();
+}
+
+
+/* ================================
+   COPY
+================================ */
+
+async function copyPassword(){
+
+    if(!generatedInput.value){
+
+        generatePassword();
+
+    }
+
+    try{
+
+        await navigator.clipboard.writeText(
+            generatedInput.value
+        );
+
+        alert("Password copied to clipboard");
+
+    }
+    catch{
+
+        alert("Copy failed. Please copy it manually.");
+
+    }
+}
+
+
+/* ================================
+   HAVE I BEEN PWNED
+   K-ANONYMITY CHECK
+================================ */
+
+async function checkBreach(password){
+
+    if(password.length < 1)
+        return;
+
+    try{
+
+        const encoder =
+            new TextEncoder();
+
+        const data =
+            encoder.encode(password);
+
+        const hashBuffer =
+            await crypto.subtle.digest(
+                "SHA-1",
+                data
+            );
+
+        const hashArray =
+            Array.from(
+                new Uint8Array(hashBuffer)
+            );
+
+        const hash =
+            hashArray
+            .map(b =>
+                b.toString(16).padStart(2,"0")
+            )
+            .join("")
+            .toUpperCase();
+
+        const prefix =
+            hash.substring(0,5);
+
+        const suffix =
+            hash.substring(5);
+
+        const response =
+            await fetch(
+                `https://api.pwnedpasswords.com/range/${prefix}`
+            );
+
+        if(!response.ok)
+            return;
+
+        const text =
+            await response.text();
+
+        const lines =
+            text.split("\n");
+
+        const match =
+            lines.find(line =>
+                line.startsWith(suffix)
+            );
+
+        const commonCheck =
+            document.getElementById("c-common");
+
+        if(match){
+
+            commonCheck.classList.remove("good");
+
+            commonCheck.querySelector(".check-icon")
+                .textContent = "⚠";
+
+            commonCheck.lastChild.textContent =
+                " Password found in breach database";
+
+        }
+
+    }
+    catch(error){
+
+        console.log(
+            "Breach check unavailable",
+            error
+        );
+
+    }
+}
+
+
+/* INITIALIZE */
+
+reset();
+
+</script>
+
+</body>
+</html>
