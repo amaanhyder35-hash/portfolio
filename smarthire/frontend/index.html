@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SmartHire | Resume Matcher</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            Smart<span>Hire</span>
+        </div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#matcher">Matcher</a>
+            <a href="#about">About</a>
+        </nav>
+    </header>
+
+
+    <section id="home" class="hero">
+
+        <div class="hero-content">
+
+            <p class="tag">AI-POWERED CAREER TOOL</p>
+
+            <h1>
+                Find out how well your
+                <span>skills match</span>
+                a job.
+            </h1>
+
+            <p class="hero-text">
+                SmartHire analyzes your skills against a job
+                description and provides a personalized match score.
+            </p>
+
+            <a href="#matcher" class="btn">
+                Start Matching →
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <section id="matcher" class="matcher">
+
+        <div class="section-title">
+
+            <p class="tag">SMART MATCHING</p>
+
+            <h2>Check Your Job Match</h2>
+
+            <p>
+                Enter your skills and the job description below.
+            </p>
+
+        </div>
+
+
+        <div class="matcher-grid">
+
+            <div class="card">
+
+                <h3>Your Skills</h3>
+
+                <p>
+                    Enter your technical skills separated by commas.
+                </p>
+
+                <textarea
+                    id="skills"
+                    placeholder="Java, Python, HTML, CSS, JavaScript, SQL"></textarea>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>Job Description</h3>
+
+                <p>
+                    Paste the job description here.
+                </p>
+
+                <textarea
+                    id="jobDescription"
+                    placeholder="We are looking for a Java developer with Python, SQL and REST API knowledge..."></textarea>
+
+            </div>
+
+        </div>
+
+
+        <button id="analyzeBtn" class="analyze-btn">
+            Analyze My Match
+        </button>
+
+
+        <div id="result" class="result hidden">
+
+            <div class="score">
+                <span id="scoreValue">0%</span>
+                <small>Match Score</small>
+            </div>
+
+            <div class="result-info">
+
+                <h3 id="resultTitle">
+                    Your Results
+                </h3>
+
+                <p id="resultMessage">
+                    Analysis results will appear here.
+                </p>
+
+                <h4>Matched Skills</h4>
+
+                <div id="matchedSkills" class="skills-list"></div>
+
+                <h4>Missing Skills</h4>
+
+                <div id="missingSkills" class="skills-list"></div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section id="about" class="about">
+
+        <p class="tag">ABOUT THE PROJECT</p>
+
+        <h2>Built with modern web technologies.</h2>
+
+        <div class="tech-grid">
+
+            <div>HTML5</div>
+            <div>CSS3</div>
+            <div>JavaScript</div>
+            <div>Java</div>
+            <div>Spring Boot</div>
+            <div>Python</div>
+            <div>FastAPI</div>
+            <div>REST API</div>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+        <p>
+            SmartHire © 2026 | Full-Stack Portfolio Project
+        </p>
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
